@@ -54,7 +54,7 @@ function checkScore() {
 
     winningCombos.forEach(array => {
         const crossWins = array.every(cell => 
-            allSquares[cell].firstChild?.classList.contains('cross'))
+            allSquares[cell].firstChild?.classList.contains('cross'));
             
             if (crossWins) {
                 infoDisplay.setAttribute("style", "color: brown;");
@@ -64,3 +64,9 @@ function checkScore() {
             }
     })
 }
+
+const restart = () => {
+    location.reload();
+}
+
+restartBtn.addEventListener('click', restart);

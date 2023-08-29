@@ -7,6 +7,20 @@ body {
     flex-direction: column;
     height: 100vh;
 }
+#button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--orange);
+    color: #333;
+    border-color: var(--orange);
+    font-size: 18px;
+    transition: 200ms transform;
+    font-weight: 600;
+}
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
 
 #gameboard {
     width: 300px;
