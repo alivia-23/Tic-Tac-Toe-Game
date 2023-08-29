@@ -46,7 +46,7 @@ function checkScore() {
             
             if (circleWins) {
                 infoDisplay.setAttribute("style", "color: brown;");
-                infoDisplay.textContent = "Circle Wins!!!"
+                infoDisplay.textContent = "Yay!!! Circle Wins!!!"
                 allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
                 return
             }
@@ -58,7 +58,7 @@ function checkScore() {
             
             if (crossWins) {
                 infoDisplay.setAttribute("style", "color: brown;");
-                infoDisplay.textContent = "Cross Wins!!!"
+                infoDisplay.textContent = "Yay!!! Cross Wins!!!"
                 allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
                 return
             }
