@@ -25,7 +25,9 @@ function addGo(e) {
     goDisplay.classList.add(turn)
     e.target.append(goDisplay)
     turn = turn === "circle" ? "cross" : "circle"
-    infoDisplay.textContent = "It is now " + turn + "'s turn."
+    style = turn === "circle" ? "color: orange;" : "color: green;";
+    infoDisplay.setAttribute("style", style);
+    infoDisplay.textContent = turn + "'s turn."
     e.target.removeEventListener("click", addGo)
     checkScore()
 }
@@ -43,6 +45,7 @@ function checkScore() {
             allSquares[cell].firstChild?.classList.contains('circle'))
             
             if (circleWins) {
+                infoDisplay.setAttribute("style", "color: brown;");
                 infoDisplay.textContent = "Circle Wins!!!"
                 allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
                 return
@@ -54,6 +57,7 @@ function checkScore() {
             allSquares[cell].firstChild?.classList.contains('cross'))
             
             if (crossWins) {
+                infoDisplay.setAttribute("style", "color: brown;");
                 infoDisplay.textContent = "Cross Wins!!!"
                 allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
                 return

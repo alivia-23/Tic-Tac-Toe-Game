@@ -16,6 +16,15 @@ body {
     flex-wrap: wrap;
     border: solid 1px black;
 }
+.title {
+    font-size: x-large;
+    color: darkviolet;
+}
+
+#info {
+    color: blue;
+    font-size: xx-large;
+}
 
 .square {
     width: 100px;
@@ -32,7 +41,7 @@ body {
     height: 90px;
     width: 90px;
     border-radius: 50%;
-    border: 15px solid blue;
+    border: 15px solid orange;
     box-sizing: border-box;
 }
 
@@ -46,7 +55,7 @@ body {
 .cross:before, .cross:after {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: green;
 }
 
 .cross:before {
