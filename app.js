@@ -63,6 +63,18 @@ function checkScore() {
                 return
             }
     })
+
+    let draw = true;
+    for (let i = 0; i < allSquares.length; i++) {
+        if(!allSquares[i].hasChildNodes()) {
+            draw = false;
+            break;
+        }
+    }
+    if (draw) {
+        infoDisplay.setAttribute("style", "color: blue;");
+        infoDisplay.textContent = "Uh Oh!! Match Draw!!!"
+    }
 }
 
 const restart = () => {

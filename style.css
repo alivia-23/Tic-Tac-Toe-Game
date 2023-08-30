@@ -12,7 +12,7 @@ button {
     border-radius: 10px;
     background-color: orange;
     color: #333;
-    border-color: var(--orange);
+    border-color: orange;
     font-size: 18px;
     transition: 200ms transform;
     font-weight: 600;
