@@ -32,41 +32,55 @@ function addGo(e) {
     checkScore()
 }
 
-function checkScore() {
-    const allSquares = document.querySelectorAll(".square")
-    const winningCombos = [
-        [0,1,2], [3,4,5], [6,7,8],
-        [0,3,6], [1,4,7], [2,5,8],
-        [0,4,8], [2,4,6]
-    ]
+const allSquares = document.querySelectorAll(".square")
+const winningCombos = [
+    [0,1,2], [3,4,5], [6,7,8],
+    [0,3,6], [1,4,7], [2,5,8],
+    [0,4,8], [2,4,6]
+]
 
-    winningCombos.forEach(array => {
-        const circleWins = array.every(cell => 
+function isCircleWinner() {
+    for (var i = 0; i < winningCombos.length; i++) {
+        const circleWins = winningCombos[i].every(cell => 
             allSquares[cell].firstChild?.classList.contains('circle'))
-            
-            if (circleWins) {
-                infoDisplay.setAttribute("style", "color: brown;");
-                infoDisplay.textContent = "Yay!!! Circle Wins!!!"
-                allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
-                return
-            }
-    })
+        if (circleWins) {
+            return true;
+        }
+    }
+    return false;
+}
 
-    winningCombos.forEach(array => {
-        const crossWins = array.every(cell => 
-            allSquares[cell].firstChild?.classList.contains('cross'));
-            
-            if (crossWins) {
-                infoDisplay.setAttribute("style", "color: brown;");
-                infoDisplay.textContent = "Yay!!! Cross Wins!!!"
-                allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
-                return
-            }
-    })
+function isCrossWinner() {
+    for (var i = 0; i < winningCombos.length; i++) {
+        const crossWins = winningCombos[i].every(cell => 
+            allSquares[cell].firstChild?.classList.contains('cross'))
+        if (crossWins) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkScore() {
+    const circleWins = isCircleWinner();
+    if (circleWins) {
+        infoDisplay.setAttribute("style", "color: brown;");
+        infoDisplay.textContent = "Yay!!! Circle Wins!!!"
+        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+        return
+    } 
+
+    const crossWins = isCrossWinner();
+    if (crossWins) {
+        infoDisplay.setAttribute("style", "color: brown;");
+        infoDisplay.textContent = "Yay!!! Cross Wins!!!"
+        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+        return
+    } 
 
     let draw = true;
     for (let i = 0; i < allSquares.length; i++) {
-        if(!allSquares[i].hasChildNodes()) {
+        if (!allSquares[i].hasChildNodes()) {
             draw = false;
             break;
         }
@@ -74,7 +88,7 @@ function checkScore() {
     if (draw) {
         infoDisplay.setAttribute("style", "color: blue;");
         infoDisplay.textContent = "Uh Oh!! Match Draw!!!"
-    }
+    }           
 }
 
 const restart = () => {
